@@ -1,0 +1,16 @@
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead class="">
+      <th>Index</th>
+      <th>Icon</th>
+      <th>Class</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of bootstrapIconClasses">
+        <td>{{i.index}}</td>
+        <td><i class="{{i.class}}"></i></td>
+        <td (cdkCopyToClipboardCopied)="onClipboardCopy($event)" [cdkCopyToClipboard]="i.class">{{i.class}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

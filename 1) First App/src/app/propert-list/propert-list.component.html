@@ -1,0 +1,6 @@
+<div class="row text-center justify-content-center">
+  <h2><b><u>House List</u></b></h2>
+  <div class="col-md-3 shadow m-2" *ngFor="let property of properties">
+    <app-property-card [property]="property"></app-property-card>
+  </div>
+</div>

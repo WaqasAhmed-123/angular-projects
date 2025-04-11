@@ -1,0 +1,37 @@
+
+<!-- to implement this need to install package
+npm install --save @ng-select/ng-select
+also register it in app.module.ts and style.css files -->
+
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+<div class="form-group">
+  <label>Select user</label>
+  <ng-select #select
+    [items]="dataBuffer"
+    [virtualScroll]="true"
+    [loading]="loading"
+    bindLabel="name"
+    bindValue="id"
+    formControlName="userId"
+    placeholder="Select photo"
+    (scrollToEnd)="fetchMore()"
+    (search)="searchData(select.searchTerm)">
+    <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
+      {{item.name}}
+    </ng-template>
+  </ng-select>
+
+  <span *ngIf="!formGroup.get('userId')!.valid && formGroup.get('userId')!.touched">
+    <span *ngIf = "formGroup.get('userId')!.errors?.['required']">is required</span>
+  </span>
+  </div>
+
+  <input type="submit" value="Submit">
+</form>
+
+
+
+
+
+
+

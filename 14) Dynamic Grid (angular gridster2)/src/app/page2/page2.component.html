@@ -1,0 +1,19 @@
+<div>
+  <button (click)="addItem()">Add Item</button>
+
+  <gridster [options]="gridOptions" style="min-height: 550px;">
+    <gridster-item *ngFor="let item of gridItems" [item]="item" style="border-radius: 5px !important;">
+      <div class="grid-item" >
+        <button class="btn btn-sm btn-rounded btn-danger float-end m-1" (click)="removeItem($event, item)">X</button>
+        <br>
+        <div class="p-2" [innerHTML]="item['content']"></div>
+        {{item|json}}
+      </div>
+    </gridster-item>
+  </gridster>
+</div>
+
+
+<ng-template #testTemplate>
+  <h3>New Item</h3>
+</ng-template>

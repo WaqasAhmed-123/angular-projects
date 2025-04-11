@@ -1,0 +1,38 @@
+<div class="row m-3">
+
+  <div class="col-12 text-end">
+    <button class="btn btn-sm btn-info m-1" (click)="addText()">Text</button>
+    <button class="btn btn-sm btn-primary m-1" (click)="addRectangle()">Rectangle</button>
+    <button class="btn btn-sm btn-info m-1" (click)="addTriangle()">Triangle</button>
+    <button class="btn btn-sm btn-primary m-1" (click)="addCircle()">Circle</button>
+    <button class="btn btn-sm btn-info m-1" (click)="addImage()">Image</button>
+    <button class="btn btn-sm btn-info m-1" (click)="addVideo()">Video</button>
+    <button class="btn btn-sm btn-primary m-1" (click)="addPolygon()">Polyogon</button>
+    <button class="btn btn-sm btn-info m-1" (click)="addCustom()">Custom Shape</button>
+    <button class="btn btn-sm btn-info m-1" (click)="addLine()">Line</button>
+    <button class="btn btn-sm btn-info m-1" (click)="addSvg()">SVG</button>
+
+    <button class="btn btn-sm btn-warning m-1" (click)="exportCanvas()">Download</button>
+
+    <br>
+    <button class="btn btn-sm btn-secondary m-1" *ngIf="elementSelected" (click)="copy()">Copy</button>
+    <button class="btn btn-sm btn-secondary m-1" *ngIf="copiedObject" (click)="paste()">paste</button>
+
+    <br>
+    <button class="btn btn-sm btn-primary m-1" *ngIf="elementSelected" (click)="group()">Group</button>
+    <button class="btn btn-sm btn-primary m-1" *ngIf="elementSelected" (click)="ungroup()">Un-group</button>
+
+
+    <br>
+    <button class="btn btn-sm btn-danger m-1" *ngIf="elementSelected" (click)="deleteSelected()">Delete</button>
+
+    <!-- <br>
+    <button class="btn btn-sm btn-danger m-1" (click)="saveState()">save</button>
+    <button class="btn btn-sm btn-danger m-1" (click)="redo()">redo</button>
+    <button class="btn btn-sm btn-danger m-1" (click)="undo()">undo</button> -->
+  </div>
+  <div class="col-12 m-3 d-flex justify-content-center">
+    <canvas id="myCanvas"></canvas>
+  </div>
+
+</div>

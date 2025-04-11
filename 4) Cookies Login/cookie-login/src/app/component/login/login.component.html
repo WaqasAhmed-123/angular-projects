@@ -1,0 +1,13 @@
+<button (click)="login()" *ngIf="loggedinUser == null">Login</button> &nbsp; 
+<button (click)="logout()" *ngIf="loggedinUser != null">Logout</button>
+
+<div *ngIf="loggedinUser != null">
+    <h3>Logged in User</h3>
+    <b>Id : </b>{{loggedinUser.id}}
+    <br>
+    <b>Name : </b>{{loggedinUser.name}}
+    <br>
+    <b>Email : </b>{{loggedinUser.email}}
+    <br>
+    <b>Token : </b>{{loggedinUser.token}}
+</div>

@@ -1,0 +1,4 @@
+/* need to import this file in style.css */
+.ng-invalid.ng-touched{
+  border-color: red;
+}

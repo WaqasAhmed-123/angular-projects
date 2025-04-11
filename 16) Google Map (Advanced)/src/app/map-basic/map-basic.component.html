@@ -1,0 +1,28 @@
+<div class="p-3">
+  <h3 class="text-center"><u>Basic map implementation</u></h3>
+  <div class="input-group mb-3">
+    <input id="search-input" type="text" class="form-control" placeholder="Search for places"
+    (input)="onInputChange()"/>
+    <!-- <div class="input-group-append">
+      <button class="btn btn-primary" [disabled]="isLoading" type="button"
+      (click)="onSearch()">Search</button>
+    </div> -->
+  </div>
+
+<div *ngIf="isLoading" class="text-center">
+  Loading...
+</div>
+
+<google-map *ngIf="showMap"
+  height="400px"
+  width="100%"
+  [center]="initialPosition"
+  [zoom]="zoom"
+  (mapClick)="onMapClick($event)">
+
+  <map-marker [position]="initialPosition" [title]="'Current Location'" (mapClick)="onMarkerClick(initialPosition)"
+  [icon]="'https://img.icons8.com/?size=100&id=odQttodTU1P8&format=png&color=000000'"></map-marker>
+  <map-marker *ngFor="let i of markers" [position]="i.center" [title]="i.title" (mapClick)="onMarkerClick(i.center)"></map-marker>
+</google-map>
+
+</div>

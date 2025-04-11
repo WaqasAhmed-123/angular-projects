@@ -1,0 +1,11 @@
+.custScroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.custScroll::-webkit-scrollbar-thumb {
+  background: grey;
+}
+
+.hide-toggle-icon::after{
+  display: none !important;
+}

@@ -1,0 +1,17 @@
+<div class="form-group mb-1">
+  <label [for]="controlName">{{label}}
+    <span *ngIf="isRequired()" class="text-danger">*</span>
+  </label>
+  <input class="form-control" type="{{type}}" [id]="controlName" [formControl]="control"
+  placeholder="{{placeholder}}"/>
+
+  <span *ngIf="control.invalid && (isSubmitted || control.touched) " class="text-danger">
+    <span *ngIf="control.errors?.['required']">Field is required.</span>
+    <span *ngIf="control.errors?.['email']">Invalid email format.</span>
+    <span *ngIf="control.errors?.['minlength']">Required length is {{control.errors?.['minlength']?.['requiredLength']}}.</span>
+    <span *ngIf="control.errors?.['maxlength']">Max length is {{control.errors?.['maxlength']?.['requiredLength']}}.</span>
+    <span *ngIf="control.errors?.['min']">Min value is {{control.errors?.['min']?.['min']}}.</span>
+    <span *ngIf="control.errors?.['max']">Max value is {{control.errors?.['max']?.['max']}}.</span>
+  </span>
+
+</div>

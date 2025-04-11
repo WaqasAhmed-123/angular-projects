@@ -1,0 +1,13 @@
+<!-- Need to install the following libraries to implement the scheduler
+npm install ngx-cron-jobs  --save (needs registration)
+npm install cronstrue --save
+npm install cron-parser --save -->
+
+
+<h3><b>Ngx Cron Jobs</b></h3>
+<form [formGroup]="inputForm" (ngSubmit)="getExpression()">
+  
+  <cron-jobs [formControl]="inputForm.controls.exp" [config]="myConfig"></cron-jobs>
+  <br>
+  <button type="submit">Submit</button>
+</form>

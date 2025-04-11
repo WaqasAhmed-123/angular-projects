@@ -1,0 +1,16 @@
+<input type="file" (change)="fileChangeEvent($event)" />
+
+<div>
+
+  <image-cropper class="cropper" [cropperMaxWidth]="10" [cropperMaxHeight]="10"
+  [imageChangedEvent]="imageChangedEvent"
+  [maintainAspectRatio]="true"
+  format="png"
+  (imageCropped)="imageCropped($event)"
+  (imageLoaded)="imageLoaded($event)"
+  (cropperReady)="cropperReady()"
+  (loadImageFailed)="loadImageFailed()"
+  ></image-cropper>
+</div>
+
+<img class="cropper" *ngIf="croppedImage" [src]="croppedImage" />

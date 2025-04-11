@@ -1,0 +1,36 @@
+<!--
+Required to install following libraries in project.
+npm install @fullcalendar/angular --save
+npm install @fullcalendar/daygrid --save
+npm install @fullcalendar/interaction --save
+npm install @fullcalendar/timegrid --save
+npm install @fullcalendar/list --save
+
+after that Need to register “FullCalendarModule” in “app.module.ts” project.
+
+also need to install and register the following library for html tooltips
+npm i ng2-tooltip-directive
+may add "--force" with command -->
+
+<app-loader *ngIf="isLoading"></app-loader>
+<div class="container m-2">
+
+  <div class='mb-3 text-center'>
+    <button class="btn btn-info m-1" (click)="LoadCalendar()">Refesh</button>
+    <button class="btn btn-primary" (click)="toggleWeekends()">Toggle Weekend</button>
+  </div>
+
+  <full-calendar [options]='calendarOptions'>
+    <ng-template #eventContent let-arg>
+      <button [autoPlacement]="true" [zIndex]="9999" tooltip="Delete" class="btn btn-sm btn-secondary p-0 px-1 m-1" (click)="deleteEvent()">x</button>
+
+      <i
+        [autoPlacement]="true"
+        [zIndex]="9999"
+        theme="light"
+        tooltip="<h4>{{arg.event.title}}</h4><b>&nbsp;Start: </b>{{arg.event.startStr}}<br><b>End: </b>{{arg.event.endStr}}">
+        {{ arg.event.title }}
+      </i>
+    </ng-template>
+  </full-calendar>
+</div>

@@ -1,0 +1,15 @@
+
+<div class="card m-1">
+  <img src="assets/Images/house1.jpg" style="width: auto;"/>
+  <div class="card-body text-start">
+
+    <b>Type: {{property.Type}}</b>
+    <br>
+    <b>Name: {{property.Name}}</b>
+    <br>
+    <b>Rent: {{property.Price}}</b>
+  </div>
+  <div class="card-footer">
+    <a routerLink="/property-detail/{{property.Id}}" class="btn btn-sm btn-info">View</a>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<!-- need to install
+npm install @microsoft/signalr
+also create service and register it in app.module.ts -->
+
+<div>
+  <h3 class="text-center text-decoration-underline">SignalR Chat</h3>
+
+  <div class="form-group mb-2">
+    <label>Message</label>
+    <textarea (keyup.control.enter)="sendMessage()" class="form-control" type="text" [(ngModel)]="message" placeholder="Message Here" autofocus></textarea>
+    <span class="text-danger">{{errMsg}}</span>
+  </div>
+  <button class="btn btn-primary" (click)="sendMessage()">Send</button>
+
+  <hr>
+  <div class="row m-2" *ngIf="list.length">
+    <div class="col-5 offset-3">
+      <h5 class="text-center"><u><b>Chat history</b></u></h5>
+    <ul class="list-group">
+      <li *ngFor="let i of list.reverse()" class="list-group-item m-1" [ngClass]="{'bg-info': i.id.toString() === loggedinUser.id.toString(), 'bg-secondary' : i.id.toString() != loggedinUser.id.toString() }">
+        <b>{{i.user}} : </b>
+        {{i.message}}
+      </li>
+    </ul>
+  </div>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+<app-loader *ngIf="isLoading"></app-loader>
+
+<div class="container mt-1">
+  <div class="row m-1">
+    <div class="col-md-6 border border-dark rounded offset-md-2 shadow">
+      <div class="text-center m-4">
+        <h4><u>Add New Manager</u></h4>
+      </div>
+
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+
+        <!-- <app-checkbox-input
+          [control]="formGroup.controls.term"
+          [controlName]="'term'" [label]="'Terms & Conditions'"
+          [isSubmitted]="isSubmitted">
+        </app-checkbox-input> -->
+
+        <!-- <app-ng-select-input
+          [control]="formGroup.controls.role"
+          [controlName]="'name'" [label]="'Select User'"
+          [placeholder]="'Please select user here.'" [isMultiple]="true"
+          [isSubmitted]="isSubmitted" [apiEndpoint]="'/Admin/UserDropDown'">
+        </app-ng-select-input> -->
+
+        <!-- <app-radio-input
+          [control]="formGroup.controls.role"
+          [controlName]="'role'" [label]="'Gender'"
+          [isSubmitted]="isSubmitted"
+          [data]="[ {label: 'Male', value:'male'}, {label: 'Female', value: 'female'}]">
+        </app-radio-input> -->
+
+        <app-select-input
+          [control]="formGroup.controls.role"
+          [controlName]="'role'" [label]="'Role'"
+          [placeholder]="'-- Select Role --'"
+          [isSubmitted]="isSubmitted"
+          [data]="[ {id:2, name:'Manager'}, {id: 3, name: 'Employee'}]">
+        </app-select-input>
+
+        <app-text-input
+        [control]="formGroup.controls.name"
+        [type]="'text'" [controlName]="'name'" [label]="'Full Name'"
+        [placeholder]="'Enter Full Name Here.'"
+        [isSubmitted]="isSubmitted" ></app-text-input>
+
+        <app-text-input
+        [control]="formGroup.controls.contact"
+        [type]="'text'" [controlName]="'contact'" [label]="'Contact Number'"
+        [placeholder]="'Enter Contact Number Here.'"
+        [isSubmitted]="isSubmitted" ></app-text-input>
+
+        <app-text-input
+        [control]="formGroup.controls.email"
+        [type]="'email'" [controlName]="'email'" [label]="'Email'"
+        [placeholder]="'Enter Valid Email Here.'"
+        [isSubmitted]="isSubmitted" ></app-text-input>
+
+        <app-text-input
+        [control]="formGroup.controls.password"
+        [type]="'password'" [controlName]="'password'" [label]="'Password'"
+        [placeholder]="'Enter Password Here.'"
+        [isSubmitted]="isSubmitted" ></app-text-input>
+
+        <div class="form-group mb-2 text-center">
+          <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</div>

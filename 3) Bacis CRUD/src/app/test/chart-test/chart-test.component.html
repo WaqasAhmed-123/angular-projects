@@ -1,0 +1,97 @@
+<!-- need to install following library
+npm install @swimlane/ngx-charts --save
+also register "NgxChartsModule" in app.module.ts  -->
+
+<div class="container">
+  <h4 class="fw-bold text-decoration-underline text-center">Vertical bar Chart</h4>
+  <div class="d-flex justify-content-center">
+    <ngx-charts-bar-vertical
+    [customColors]="barChartcustomColors"
+    [view]="[700, 300]"
+    [results]="data"
+    [gradient]="false"
+    [xAxis]="true"
+    [yAxis]="true"
+    [legend]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    [xAxisLabel]="'Name'"
+    [yAxisLabel]="'Score'"
+    (select)="onSelect($event)">
+    </ngx-charts-bar-vertical>
+  </div>
+</div>
+<hr>
+<div class="container">
+  <h4 class="fw-bold text-decoration-underline text-center">Horizontal bar Chart</h4>
+  <div class="d-flex justify-content-center">
+    <ngx-charts-bar-horizontal
+    [customColors]="barChartcustomColors"
+    [view]="[700, 300]"
+    [results]="data"
+    [gradient]="false"
+    [xAxis]="true"
+    [yAxis]="true"
+    [legend]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    [xAxisLabel]="'Name'"
+    [yAxisLabel]="'Score'"
+    (select)="onSelect($event)">
+    </ngx-charts-bar-horizontal>
+  </div>
+</div>
+
+<hr>
+<div class="container">
+  <h4 class="fw-bold text-decoration-underline text-center">Line Chart</h4>
+  <div class="d-flex justify-content-center">
+    <ngx-charts-line-chart
+    [view]="[700, 300]"
+    [legend]="false"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    [xAxis]="true"
+    [yAxis]="true"
+    [xAxisLabel]="'Exams'"
+    [yAxisLabel]="'Result'"
+    [timeline]="true"
+    [results]="data2"
+    (select)="onSelect($event)">
+    </ngx-charts-line-chart>
+  </div>
+</div>
+
+
+<hr>
+<div class="container">
+  <h4 class="fw-bold text-decoration-underline text-center">Pie Chart</h4>
+  <div class="d-flex justify-content-center">
+    <ngx-charts-pie-chart #chart
+    [view]="[700, 300]"
+    [results]="data"
+    [gradient]="false"
+    [legend]="true"
+    [labels]="true"
+    [doughnut]="false"
+    (select)="onSelect($event)">
+    </ngx-charts-pie-chart>
+  </div>
+</div>
+
+<hr>
+<div class="container">
+  <h4 class="fw-bold text-decoration-underline text-center">Doughnut Chart</h4>
+  <div class="d-flex justify-content-center">
+    <ngx-charts-pie-chart
+    [view]="[700, 300]"
+    [results]="data"
+    [gradient]="false"
+    [legend]="true"
+    [labels]="true"
+    [doughnut]="true"
+    (select)="onSelect($event)">
+    </ngx-charts-pie-chart>
+  </div>
+</div>
+

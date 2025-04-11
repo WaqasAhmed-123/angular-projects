@@ -1,0 +1,10 @@
+<p>pie-chart works!</p>
+<canvas
+  baseChart
+  class="chart"
+  [data]="pieChartData"
+  [type]="pieChartType"
+  [options]="pieChartOptions"
+  (chartClick)="chartClicked($event)"
+>
+</canvas>

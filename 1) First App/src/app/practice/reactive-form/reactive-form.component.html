@@ -1,0 +1,74 @@
+<!-- need to import "ReactiveFormsModule" in app.module.ts -->
+<div class="row mt-3">
+  <div class="col-md-6 m-auto">
+  <div class="card m-auto">
+    <div class="card-header">
+      <b>Register </b><small>(reactive form)</small>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="registerationForm" (ngSubmit)="onSubmit()">
+        <div class="form-group col-12">
+            <b for="name" class="form-label">Name</b>
+            <input type="text" class="form-control" formControlName="name">
+
+            <small *ngIf="!name.valid && name.touched" class="text-danger">
+              <span *ngIf="name.hasError('required')">Name field is required.</span>
+              <span *ngIf="name.errors?.['minlength']">Minimum length is 2 characters.</span>
+            </small>
+        </div>
+
+        <div class="form-group col-12">
+          <b for="email" class="form-label">Email</b>
+          <input type="text" class="form-control" formControlName="email">
+
+          <small *ngIf="!email.valid && email.touched" class="text-danger">
+            <span *ngIf="email.errors?.['required']">Email field is required.</span>
+            <span *ngIf="email.errors?.['email']">Invalid Email.</span>
+          </small>
+        </div>
+
+        <div class="form-group col-12">
+          <b for="passwrod" class="form-label">Password</b>
+          <input type="text" class="form-control" formControlName="password">
+
+          <small *ngIf="!password.valid && password.touched" class="text-danger">
+            <span *ngIf="password.errors?.['required']">Password field is required.</span>
+            <span *ngIf="password.errors?.['minlength']">Minimum length is 5 characters.</span>
+          </small>
+        </div>
+
+        <div class="form-group col-12">
+          <b for="cpassword" class="form-label">Confirm Password</b>
+          <input type="text" class="form-control" formControlName="confirmPassword">
+
+          <small class="text-danger">
+            <span *ngIf="!confirmPassword.valid && confirmPassword.touched && confirmPassword.errors?.['required']">
+              Confirm password field is required.
+            </span>
+            <span *ngIf="registerationForm.errors?.['notmatched'] && confirmPassword.valid">
+              Password and Confirm password not matched.
+            </span>
+          </small>
+        </div>
+
+        <div class="form-group col-12">
+          <b for="mobile" class="form-label">Mobile</b>
+          <input type="text" class="form-control" formControlName="mobile">
+          <small *ngIf="!mobile.valid && mobile.touched && mobile.errors?.['required']" class="text-danger">
+            <span>Mobile field is required.</span>
+          </small>
+        </div>
+
+        <div class="form-group col-12">
+          <button [disabled]="!registerationForm.valid" type="submit" class="btn btn-primary">Save</button>
+          <button type="reset" class="btn btn-secondary m-2">Clear</button>
+        </div>
+
+        Value: {{registerationForm.value | json}}
+        Status: {{registerationForm.valid}}
+
+      </form>
+    </div>
+  </div>
+  </div>
+</div>

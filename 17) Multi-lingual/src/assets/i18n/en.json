@@ -1,0 +1,17 @@
+{
+  "HEADINGS": {
+    "LANG": "Language",
+    "HOME": "User List"
+  },
+  "TABLES":{
+    "USER_HEADER": {
+      "NAME": "User Name",
+      "EMAIL": "Email",
+      "CONTACT": "Contact Details"
+    }
+  },
+  "DYNAMIN_MSG": "We are {{var}} team. {{var2}}",
+  "ALERT_MSG": "This is message",
+  "BTN_LABEL" : "Show Alert",
+  "BTN_LABEL2" : "Show Dynamic Alert"
+}

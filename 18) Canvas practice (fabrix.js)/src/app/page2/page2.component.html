@@ -1,0 +1,43 @@
+<div class="row m-3">
+
+  <div class="col-12 m-3 d-flex justify-content-center">
+    <canvas id="myCanvas"></canvas>
+  </div>
+
+  <div>
+    <button (click)="onClearCanvas()">Clear Canvas</button>
+    <button (click)="onToggleDrawingMode()">Toggle Drawing Mode</button>
+  </div>
+
+  <div>
+    <label>Brush Type:</label>
+    <select (change)="onBrushChange($event.target)">
+      <option value="pencil">Pencil</option>
+      <option value="vline">Vertical Line</option>
+      <option value="hline">Horizontal Line</option>
+      <option value="square">Square</option>
+      <option value="diamond">Diamond</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Color:</label>
+    <input type="color" (change)="onColorChange($event.target)" />
+  </div>
+
+  <div>
+    <label>Line Width:</label>
+    <input type="number" (input)="onLineWidthChange($event.target)" />
+  </div>
+
+  <div>
+    <label>Shadow Blur:</label>
+    <input type="number" (input)="onShadowBlurChange($event.target)" />
+  </div>
+
+  <div>
+    <label>Shadow Color:</label>
+    <input type="color" (change)="onShadowColorChange($event.target)" />
+  </div>
+
+</div>

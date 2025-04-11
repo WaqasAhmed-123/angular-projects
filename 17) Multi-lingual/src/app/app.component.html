@@ -1,0 +1,45 @@
+<div class="container m-2">
+
+  <div class="text-end">
+    {{'HEADINGS.LANG'|translate}}:
+    <select (change)="switchLanguage($event)">
+      <option value="en" [selected]="selectedLanguage==='en'">English</option>
+      <option value="fr" [selected]="selectedLanguage==='fr'">Français</option>
+    </select>
+  </div>
+
+  <div class="row">
+    <h3 class="text-center text-decoration-underline">{{ 'HEADINGS.HOME' | translate }}</h3>
+
+    <div class="table-responsive">
+      <table class="table table-secondary table-bordered">
+        <thead class="bg-primary text-white">
+          <th *ngFor="let i of tableHeader">{{ i | translate }}</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>User 1</td>
+            <td>{{'u1@g.com'}}</td>
+            <td>0000-0000000</td>
+          </tr>
+          <tr>
+            <td>User 2</td>
+            <td>{{'u2@g.com'}}</td>
+            <td>1111-1111111</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      {{'DYNAMIN_MSG' | translate: { var: 'Developer', var2: '(2nd variable)' } }}
+      <br>
+      <button (click)="showAlert()" class="btn btn-primary m-1">{{'BTN_LABEL'| translate}}</button>
+      <br>
+      <button (click)="showDynamicAlert()" class="btn btn-primary m-1">{{'BTN_LABEL2'| translate}}</button>
+    </div>
+
+
+  </div>
+
+</div>

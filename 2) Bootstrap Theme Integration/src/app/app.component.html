@@ -1,0 +1,238 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a href="#" class="navbar-brand">
+      <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" height="28">
+      <!-- Nodlays -->
+    </a>
+    <button type="button" class="navbar-toggler" (click)="collapseRef.toggle()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" #collapseRef="ngbCollapse" [ngbCollapse]="true">
+      <div class="navbar-nav">
+        <a href="#" class="nav-item nav-link active">Nodlays</a>
+        <!-- <a href="#" class="nav-item nav-link">Profile</a>
+        <a href="#" class="nav-item nav-link">Messages</a>
+        <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a> -->
+      </div>
+      <div class="navbar-nav ms-auto">
+
+        <ul class="navbar-nav">
+
+          <li ngbDropdown class="nav-item dropdown" placement="left">
+            <a class="nav-link dropdown-toggle hide-toggle-icon" href="#" ngbDropdownToggle id="notification">
+              <i class="bi bi-app-indicator text-danger"></i>
+            </a>
+            <ul ngbDropdownMenu class="p-0 dropdown-menu dropdown-menu-end" aria-labelledby="notification">
+
+              <li class="head text-light bg-dark p-1 mb-1">
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12 col-md-12 col-12">
+                    <span>Notifications (3)</span>
+                    <a href="" class="float-end text-white"><i class="bi bi-person"></i></a>
+                  </div>
+                </div>
+              </li>
+
+              <div class="custScroll"
+                style="width: 300px !important; height: 250px !important; overflow-y: auto; overflow-x: hidden;">
+
+                <li class="notification-box">
+                  <a href="#" class="text-decoration-none">
+                    <div class="row">
+                      <div class="col-lg-3 col-sm-3 col-3 text-center">
+                        <img src="https://www.nicesnippets.com/demo/man-profile.jpg" class="w-50 rounded-circle">
+                      </div>
+                      <div class="col-lg-8 col-sm-8 col-8">
+                        <strong class="text-info">David John</strong>
+                        <div class="text-dark">
+                          Lorem ipsum dolor sit amet, consectetur
+                        </div>
+                        <small class="text-warning">27.11.2015, 15:00</small>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+
+                <li class="notification-box">
+                  <a href="#" class="text-decoration-none">
+                    <div class="row">
+                      <div class="col-lg-3 col-sm-3 col-3 text-center">
+                        <img src="https://www.nicesnippets.com/demo/man-profile.jpg" class="w-50 rounded-circle">
+                      </div>
+                      <div class="col-lg-8 col-sm-8 col-8">
+                        <strong class="text-info">David John</strong>
+                        <div class="text-dark">
+                          Lorem ipsum dolor sit amet, consectetur
+                        </div>
+                        <small class="text-warning">27.11.2015, 15:00</small>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+
+                <li class="notification-box">
+                  <a href="#" class="text-decoration-none">
+                    <div class="row">
+                      <div class="col-lg-3 col-sm-3 col-3 text-center">
+                        <img src="https://www.nicesnippets.com/demo/man-profile.jpg" class="w-50 rounded-circle">
+                      </div>
+                      <div class="col-lg-8 col-sm-8 col-8">
+                        <strong class="text-info">David John</strong>
+                        <div class="text-dark">
+                          Lorem ipsum dolor sit amet, consectetur
+                        </div>
+                        <small class="text-warning">27.11.2015, 15:00</small>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+
+                <li class="notification-box">
+                  <a href="#" class="text-decoration-none">
+                    <div class="row">
+                      <div class="col-lg-3 col-sm-3 col-3 text-center">
+                        <img src="https://www.nicesnippets.com/demo/man-profile.jpg" class="w-50 rounded-circle">
+                      </div>
+                      <div class="col-lg-8 col-sm-8 col-8">
+                        <strong class="text-info">David John</strong>
+                        <div class="text-dark">
+                          Lorem ipsum dolor sit amet, consectetur
+                        </div>
+                        <small class="text-warning">27.11.2015, 15:00</small>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+
+              </div>
+
+              <li class="footer bg-dark text-center">
+                <a href="" class="text-light">View All</a>
+              </li>
+
+            </ul>
+          </li>
+
+          <li ngbDropdown class="nav-item dropdown" placement="left">
+            <a class="nav-link dropdown-toggle" href="#" ngbDropdownToggle id="navbarDropdown">
+              Waqas Ahmed
+            </a>
+            <ul ngbDropdownMenu class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#"><i class="bi bi-file-person"></i> Update Profile</a></li>
+              <li><a class="dropdown-item" href="#"><i class="bi bi-lock"></i> Update Password</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#"><i class="bi bi-power"></i> Logout</a></li>
+            </ul>
+          </li>
+
+        </ul>
+
+
+        <!-- <a href="#" class="nav-item nav-link"><i class="bi bi-app-indicator text-danger"></i></a> -->
+
+
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
+      <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+
+
+
+        <ul class="nav nav-pills flex-column mt-2 mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+          <li class="nav-item ">
+            <a href="#" class="nav-link align-middle px-0 text-dark">
+              <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" (click)="collapseRef2.toggle()" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
+               &nbsp; <i class="bi bi-caret-down"></i>
+            </a>
+            <ul class="nav flex-column ms-4" #collapseRef2="ngbCollapse" (ngbCollapse)="true">
+              <li class="w-100">
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="#" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
+          </li>
+          <li>
+            <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+              <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span></a>
+            <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+              <li class="w-100">
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
+              </li>
+              <li>
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
+            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+              <li class="w-100">
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
+              </li>
+              <li>
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
+              </li>
+              <li>
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
+              </li>
+              <li>
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
+          </li>
+        </ul>
+
+
+      </div>
+    </div>
+    <div class="col py-3">
+      <h3>Left Sidebar with Submenus</h3>
+      <p class="lead">
+        An example 2-level sidebar with collasible menu items. The menu functions like an "accordion" where only a
+        single
+        menu is be open at a time. While the sidebar itself is not toggle-able, it does responsively shrink in width on
+        smaller screens.</p>
+      <ul class="list-unstyled">
+        <li>
+          <h5>Responsive</h5> shrinks in width, hides text labels and collapses to icons only on mobile
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

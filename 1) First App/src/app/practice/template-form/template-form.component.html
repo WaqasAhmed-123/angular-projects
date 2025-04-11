@@ -1,0 +1,45 @@
+<!-- need to import "FormsModule" in app.module.ts -->
+<div class="card col-md-8 offset-md-3 mt-3">
+  <div class="card-header">
+    <b>Add New Propery </b><small>(template form)</small>
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #Form="ngForm">
+      <div class="form-group col-md-12">
+        <b>Type</b>
+        <input type="text" class="form-control"
+          #propType="ngModel"
+          ngModel name="Type"
+          minlength="2" required/>
+        <small *ngIf="!propType.valid && propType.touched" class="text-danger">
+          <span *ngIf="propType.errors?.['required']">Type field is required.</span>
+          <span *ngIf="propType.errors?.['minlength']">Mim length is 2</span>
+        </small>
+      </div>
+
+      <div class="form-group col-md-12">
+        <b>Name</b>
+        <input type="text" class="form-control" #propName="ngModel" ngModel name="Name" minlength="5" required/>
+        <small *ngIf="!propName.valid && propName.touched" class="text-danger">
+          <span *ngIf="propName.errors?.['required']">Name field is required.</span>
+          <span *ngIf="propName.errors?.['minlength']">Mim length is 5</span>
+        </small>
+      </div>
+
+      <div class="form-group col-md-12">
+        <b>Price</b>
+        <input type="number" min="10000" class="form-control" #propPrice="ngModel" ngModel name="Price" required/>
+        <small *ngIf="!propPrice.valid && propPrice.touched" class="text-danger">
+          <span *ngIf="propPrice.errors?.['required']">Price field is required.</span>
+          <span *ngIf="propPrice.errors?.['min']">Mim value is 10000</span>
+        </small>
+      </div>
+
+      <div class="form-group col-md-12 text-center">
+        <button [disabled]="!Form.valid" type="submit" class="btn btn-sm btn-success m-2">Save</button>
+        <button type="reset" class="btn btn-sm btn-danger">Clear</button>
+      </div>
+    </form>
+  </div>
+
+</div>

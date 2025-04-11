@@ -1,0 +1,33 @@
+<div class="container m-2">
+
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+  <li [ngbNavItem]="1">
+    <button ngbNavLink>One</button>
+    <ng-template ngbNavContent>
+      <p>
+        This is the tab one.
+      </p>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="2">
+    <button ngbNavLink>Two</button>
+    <ng-template ngbNavContent>
+      <p>
+        This is tab two.
+      </p>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="3">
+    <button ngbNavLink>Three</button>
+    <ng-template ngbNavContent>
+      <p>
+        This is tab three.
+      </p>
+    </ng-template>
+  </li>
+</ul>
+
+<!-- tabs content will be rendered here -->
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+</div>

@@ -1,0 +1,124 @@
+<div class="container mt-4">
+
+  <div class="text-end">
+    <label>Current Store: </label> &nbsp;
+    <select [(ngModel)]="storeType" (change)="switchStore()">
+      <option value="1">Store 1</option>
+      <option value="2">Store 2</option>
+    </select>
+  </div>
+  <h2 class="text-center mb-4">Shopify Products</h2>
+
+  <div class="loader-container" *ngIf="isLoading">
+    <div class="loader"></div>
+  </div>
+
+
+  <div class="row" *ngIf="!isLoading">
+    <div *ngFor="let product of products" class="col-md-4">
+      <div class="card mb-4 shadow-sm pointer" (click)="openModal(product)">
+
+        <img [src]="product.image?.src || 'https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM='"
+        class="card-img-top" alt="{{ product.title }}" style="height: 200px; object-fit: cover;"  loading="lazy">
+
+        <div class="card-body text-center">
+          <h5 class="card-title">{{ product.title }}</h5>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row m-1 mt-1 d-flex">
+    <div class="d-flex justify-content-around">
+
+      <div>
+        <label>Page Size:</label> &nbsp;
+        <select class="text-start" [(ngModel)]="pageSize" (change)="changePageSize()">
+          <option value="15">15</option>
+          <option value="30">30</option>
+          <option value="45">45</option>
+          <option value="250">250</option>
+        </select>
+      </div>
+
+      <div>
+        <b>
+          Showing {{products?.length || 0}} out of {{totalProducts}}
+          <br>
+          Page {{currentPage}} out {{totalPages}} page/s
+        </b>
+      </div>
+
+      <div>
+        <button class="btn btn-sm btn-info" (click)="goPrevious()" title="Previous" [disabled]="!previousInfo"><</button>
+        &nbsp;
+        <button class="btn btn-sm btn-info" (click)="goNext()" title="Next" [disabled]="!nextInfo">></button>
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+<div class="custom-modal" *ngIf="isModalOpen">
+  <div class="custom-modal-content">
+
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h3 class="text-center">
+      {{ selectedProduct?.title }}
+      ({{selectedProduct?.status}})
+    </h3>
+
+    <div class="my-2" style="max-height: 500px; overflow: auto;">
+      <!-- Product Image Gallery -->
+      <div class="image-gallery">
+        <img [src]="activeImage" class="main-image">
+        <div class="thumbnail-container">
+          <img *ngFor="let img of selectedProduct?.images" [src]="img.src" class="thumbnail"
+          [class.active]="img.src === activeImage" (click)="changeImage(img.src)">
+        </div>
+
+        <hr>
+      </div>
+
+      <!-- Product Details -->
+      <b>Description: </b> <span [innerHTML]="selectedProduct?.body_html || '---'"></span>
+      <br>
+      <b>Vendor:</b> {{ selectedProduct?.vendor }}
+      <br>
+      <b>Type:</b> {{ selectedProduct?.product_type }}
+      <br>
+      <b>Tags:</b> {{ selectedProduct?.tags }}
+
+      <!-- Variants -->
+      <h4>Variants:</h4>
+      <ul>
+        <li *ngFor="let variant of selectedProduct?.variants">
+          <strong>{{ variant.title }}</strong> - {{ variant.price | currency }}
+          (Stock: {{ variant.inventory_quantity }})
+        </li>
+      </ul>
+
+      <!-- Product Options -->
+      <h4>Options:</h4>
+      <ul>
+        <li *ngFor="let option of selectedProduct?.options">
+          <strong>{{ option.name }}:</strong> {{ option.values.join(', ') }}
+        </li>
+      </ul>
+    </div>
+
+    <div class="d-flex justify-content-around">
+      <div><button class="btn btn-secondary" (click)="closeModal()">Close</button></div>
+      <div><button class="btn btn-success" (click)="addProduct()">Upload</button></div>
+      <div><button class="btn btn-danger" (click)="deleteProduct()">Delete</button></div>
+    </div>
+
+
+  </div>
+</div>

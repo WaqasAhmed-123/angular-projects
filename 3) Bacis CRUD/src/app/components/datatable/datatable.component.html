@@ -1,0 +1,72 @@
+
+<app-loader *ngIf="isLoading"></app-loader>
+
+<div class="row my-1">
+
+  <div *ngIf="isAltered" class="col-md-12 d-flex justify-content-end">
+    <button (click)="resetTable()" class="btn btn-sm btn-danger rounded rounded-circle" title="Reset Table">x</button>
+  </div>
+  <div class="col-md-3">
+    <input class="form-control" [value]="searchValue" (keyup)="applyFilter($event.target?.['value'])" placeholder="Filter">
+  </div>
+
+</div>
+
+<!-- <button (click)="onClick()">test</button> -->
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="bg-primary text-white" *ngFor="let th of tableHeader">
+          <span *ngIf="th.sortable">
+            <span class="cursor-pointer" (click)="sortTable(th.value)">
+              {{th.title}}
+              <span *ngIf="sortColumnName===th.value">
+                <i *ngIf="sortDirection==='asc'" class="bi bi-chevron-compact-down"></i>
+                <i *ngIf="sortDirection==='desc'" class="bi bi-chevron-compact-up"></i>
+              </span>
+            </span>
+          </span>
+          <span *ngIf="!th.sortable">{{th.title}}</span>
+        </th>
+      </tr>
+
+    </thead>
+    <tbody>
+      <ng-container [ngTemplateOutlet]="temp" [ngTemplateOutletContext]="{ data: dataList }"></ng-container>
+    </tbody>
+  </table>
+  <span class="d-flex justify-content-center text-secondary" *ngIf="totalRows===0">
+    No Record Found
+    <hr/>
+  </span>
+</div>
+
+<div class="row m-1">
+
+  <div class="col-md-4  text-center">
+    Page Size:
+    <select
+      (change)="changeLength($event.target?.['value'])">
+      <option value="10">10</option>
+      <option value="25">25</option>
+      <option value="75">75</option>
+      <option value="100">100</option>
+    </select>
+  </div>
+  <div class="col-md-4 text-center">
+    Page: {{currentPage+1}} ({{currentRows}} out of {{totalRows}})
+  </div>
+  <div class="col-md-4  text-center">
+      <button class="btn btn-sm btn-outline-secondary fw-bolder" (click)="goStart()">&nbsp; << &nbsp;</button>&nbsp;
+      <button class="btn btn-sm btn-outline-info fw-bolder" (click)="goPrev()">&nbsp; < &nbsp;</button>&nbsp;
+      <button class="btn btn-sm btn-outline-info fw-bolder" (click)="goNext()">&nbsp; > &nbsp;</button>&nbsp;
+      <button class="btn btn-sm btn-outline-secondary fw-bolder" (click)="goLast()">&nbsp; >> &nbsp;</button>
+  </div>
+</div>
+
+
+
+
+

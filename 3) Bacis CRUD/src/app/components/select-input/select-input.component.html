@@ -1,0 +1,25 @@
+
+<div class="form-group mb-1">
+  <div *ngIf="loading" class="spinner-border m-1" style="width: 13px; height: 13px;" role="status">
+  </div>
+  <label [for]="controlName">{{label}}
+    <span *ngIf="isRequired()" class="text-danger">*</span>
+  </label>
+  <select class="form-control" [id]="controlName" [formControl]="control">
+    <option *ngIf="placeholder" value="">{{placeholder}}</option>
+    <option *ngFor="let i of data" value="{{i.id}}">{{i.name}}</option>
+  </select>
+
+  <span *ngIf="control.invalid && (isSubmitted || control.touched) " class="text-danger">
+    <span *ngIf="control.errors?.['required']">Field is required.</span>
+  </span>
+
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,138 @@
+<section style="background-color: #eee; height: 90vh;">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
+          
+            <h5 class="font-weight-bold mb-3 text-center text-lg-start">
+            Chat History
+            <button (click)="startNewChat()" class="btn btn-info btn-sm float-end" title="Start New Chat">
+                <app-svg-icons [iconName]="'plus'" [width]="20" [fill]="'#ffffff'"></app-svg-icons>
+            </button>
+            </h5>
+  
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-unstyled mb-0" style="height: 450px; overflow: auto;">
+                        <div *ngIf="fetchHistory" style="position: fixed; background-color: white !important;">
+                            <li class="p-2 border-bottom text-danger fw-bold" >
+                                <app-svg-icons [iconName]="'loader2'" [fill]="'red'" [width]="20"></app-svg-icons>
+                                Proceeding..,
+                            </li>
+                        </div>
+                        <div *ngIf="chats.length === 0 && !fetchHistory">
+                            <li class="p-2 border-bottom text-danger fw-bold text-center" style="background-color: #eee;">
+                                No History Found
+                            </li>
+                        </div>
+                        <div *ngIf="chats.length > 0">
+                            <li class="p-2 border-bottom" style="background-color: #eee;" *ngFor="let c of chats">
+                                <span class="d-flex justify-content-between text-decoration-none text-black">
+                                    <a (click)="fetchChatMessage(c.chat_id)" style="cursor:pointer">
+                                        <div class="d-flex flex-row">
+                                            <img src="https://brain.quivr.app/img/logo.png" alt="avatar"
+                                                class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
+                                            <div *ngIf="editChatId != c.chat_id" class="pt-1" [ngClass]="selectedChatId===c.chat_id?'text-info':''">
+                                                <p class="fw-bold mb-0" *ngIf="c.chat_name.length < 20">
+                                                    {{ c.chat_name}}
+                                                </p>
+                                                <p class="fw-bold mb-0" *ngIf="c.chat_name.length >= 20" title="{{c.chat_name}}">
+                                                    {{ c.chat_name.substring(0, 30) + '...' }}
+                                                </p>
+                                                <p class="small text-muted" title="Created At">{{c.creation_time | date: 'dd-MM-yyyy hh:mm a'}}</p>
+                                            </div>
+                                            
+                                        </div>
+                                    </a>
+                                    
+                                    <div *ngIf="editChatId === c.chat_id">
+                                        <div class="pt-1">
+                                            <input class="form-control float-start" type="text" (keydown.enter)="onUpdateChatTitle(false, c)" [(ngModel)]="chatTitle"/>
+                                            <button (click)="onUpdateChatTitle(false, c)" class="btn btn-info btn-sm float-end m-1" title="Submit">
+                                                <app-svg-icons [iconName]="'pencil'" [width]="12"></app-svg-icons>
+                                            </button>
+                                            <button (click)="onUpdateChatTitle(true)" class="btn btn-secondary btn-sm float-end m-1" title="Cancel">
+                                                <app-svg-icons [iconName]="'cross'" [width]="10"></app-svg-icons>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-1 pe-2 float-end" *ngIf="editChatId === ''">
+                                        <a (click)="deleteChatHistory(c.chat_id)" title="Delete Chat" style="cursor:pointer">
+                                            <app-svg-icons [iconName]="'cross'" [width]="10"></app-svg-icons>
+                                        </a>
+                                        <br>
+
+                                        <a (click)="updateChatTitle(c)" title="Update Chat Title" style="cursor:pointer">
+                                            <app-svg-icons [iconName]="'pencil'" [width]="12"></app-svg-icons>
+                                        </a>
+                                        
+                                    </div>
+                                </span>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+  
+        </div>
+  
+        <div class="col-md-6 col-lg-7 col-xl-8">
+  
+          <ul class="list-unstyled" >
+            <div #scroller style="height: 380px; overflow: auto;" [scrollTop]="scroller.scrollHeight">
+                <div class="text-center mt-5 pt-5" *ngIf="selectedChatId===''">
+                    <h3><b>Start a new Chat</b></h3>
+                </div>
+
+                <div class="text-center text-danger mt-5 pt-5" *ngIf="selectedChatId != '' && messages.length === 0">
+                    <h3><b>No message found!</b></h3>
+                </div>
+
+                <div *ngFor="let m of messages" >
+                    <li class="d-flex justify-content-between mb-4">
+                        <div class="col-1"></div>
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between p-3">
+                                <p class="fw-bold mb-0">You</p>
+                                <p class="text-muted small mb-0 ms-2"> {{m.body.message_time | date: 'hh:mm a'}}</p>
+                            </div>
+                            <div class="card-body">
+                                <p class="mb-0">
+                                    {{m.body.user_message}}
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="d-flex justify-content-between mb-4">
+                        <div class="card w-100">
+                            <div class="card-header d-flex justify-content-between p-3">
+                                <p class="fw-bold mb-0">Quivr</p>
+                            </div>
+                            <div class="card-body">
+                                <p class="mb-0">
+                                    {{m.body.assistant}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-1"></div>
+                    </li>
+                </div>
+            </div>
+
+            <li class="bg-white mb-3">
+                <div class="form-outline">
+                    <textarea (keydown.enter)="sendMessage()"  [readOnly]="fetchHistory" placeholder="Enter your message here." class="form-control" rows="4" [(ngModel)]="chatMessage"></textarea>
+                </div>
+            </li>
+            <button *ngIf="!fetchHistory" type="button" class="btn btn-success float-end" (click)="sendMessage()">
+                Send
+                <app-svg-icons [iconName]="'send'" [width]="15" [fill]="'#ffffff'"></app-svg-icons>
+            </button>
+            <button *ngIf="fetchHistory" type="button" class="btn btn-warning float-end">
+                <app-svg-icons [iconName]="'loader2'" [width]="20" [fill]="'red'"></app-svg-icons>
+            </button>
+          </ul>
+        </div>
+      </div>
+    </div>
+</section>

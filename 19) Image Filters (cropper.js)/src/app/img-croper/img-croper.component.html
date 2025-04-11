@@ -1,0 +1,114 @@
+<div class="container mt-4">
+  <!-- Image Upload -->
+  <div class="mb-3">
+    <label for="fileUpload" class="form-label">Upload an Image</label>
+    <input type="file" class="form-control" id="fileUpload" (change)="onFileChange($event)" accept="image/*">
+  </div>
+
+  <div *ngIf="filteredImgSrc">
+    <div class="card shadow-sm p-3 mb-4">
+      <h5 class="card-title">Settings</h5>
+      <!-- Filters -->
+      <div class="row g-3">
+        <div class="col-md-3">
+          <label class="form-label">Sepia <span>({{sepia}})</span></label>
+          <input type="range" class="form-range" [(ngModel)]="sepia" step="0.1" min="0" max="1">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Grayscale <span>({{grayScale}})</span></label>
+          <input type="range" class="form-range" [(ngModel)]="grayScale" step="0.1" min="0" max="1">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Hue Rotate <span>({{hueRotate}} deg)</span></label>
+          <input type="range" class="form-range" [(ngModel)]="hueRotate" step="1" min="0" max="360">
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label">Brightness <span>({{brightness * 100 | number:'0.0-0'}} %)</span></label>
+          <input type="range" class="form-range" [(ngModel)]="brightness" step="0.1" min="0" max="3">
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label">Contrast <span>({{contrast * 100 | number:'0.0-0'}} %)</span></label>
+          <input type="range" class="form-range" [(ngModel)]="contrast" step="0.1" min="0" max="3">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Opacity ({{opacity * 100 | number:'0.0-0'}} %)</label>
+          <input type="range" class="form-range" [(ngModel)]="opacity" step="0.1" min="0" max="1">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Blur <span>({{blur | number:'0.0-0'}} px)</span></label>
+          <input type="range" class="form-range" [(ngModel)]="blur" step="0.1" min="0" max="10">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Invert <span>({{invert * 100 | number:'0.0-0'}} %)</span></label>
+          <input type="range" class="form-range" [(ngModel)]="invert" step="0.1" min="0" max="1">
+        </div>
+
+        <div *ngIf="isResizeMode" class="row">
+          <div class="col-md-4">
+            <label class="form-label">Width</label>
+            <input type="number" class="form-control" [(ngModel)]="resizeWidth" min="50">
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Height</label>
+            <input type="number" class="form-control" [(ngModel)]="resizeHeight" min="50">
+          </div>
+
+          <div class="col-md-4 mt-4 pt-2">
+            <button class="btn btn-warning" (click)="applyResize()">📏 Resize</button>
+            <button class="btn btn-danger ms-1" (click)="isResizeMode = false">Cancel</button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="row mt-3">
+        <div class="d-flex justify-content-center gap-2 mb-3">
+          <button class="btn btn-secondary" (click)="flipImage('horizontal')">↔️ Flip Horizontal</button>
+          <button class="btn btn-secondary" (click)="flipImage('vertical')">↕️ Flip Vertical</button>
+          <button class="btn btn-warning" *ngIf="!isResizeMode" (click)="isResizeMode = true">📏 Open Resize</button>
+
+          <button class="btn btn-info " (click)="applyFilters()">✂️ Open Cropper</button>
+          <button class="btn btn-success" (click)="downloadImage()">⬇️ Download Image</button>
+          <button class="btn btn-primary" (click)="dropBoxUpload()">📤 Upload Dropbox</button>
+          <button class="btn btn-outline-danger" (click)="resetEditor()">🔄 Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!filteredImgSrc" class="text-center text-danger mt-4">
+    <h4>Upload Image to filter</h4>
+  </div>
+
+  <!-- Step 2: Crop -->
+  <div *ngIf="isCropMode">
+    <div class="cardmb-4" style="overflow: hidden;">
+      <h5 class="card-title">Crop Your Image
+        <button class="btn btn-danger btn-sm float-end" (click)="clearCrop()">Cancel</button>
+        <button class="btn btn-info btn-sm float-end me-1" (click)="applyCrop()">Crop</button>
+
+      </h5>
+      <img #cropImage [src]="finalFilteredImage" class="img-fluid mb-3" />
+    </div>
+  </div>
+
+  <!-- Image Preview -->
+  <div class="text-center mt-4" *ngIf="filteredImgSrc && !isCropMode">
+    <img #image [src]="filteredImgSrc"
+    [style.filter]="'grayscale('+grayScale+') sepia('+sepia+') hue-rotate('+hueRotate+'deg) brightness('+brightness+') contrast('+contrast+') opacity('+opacity+') blur('+blur+'px) invert('+invert+')'"
+    [style.transform]="'rotate('+rotation+'deg) scaleX('+scaleX+') scaleY('+scaleY+')'"
+    class="img-fluid">
+  </div>
+
+  <div class="mt-3 text-center">
+  </div>
+
+  <!-- Reset Button -->
+  <div class="mt-3 text-center">
+
+  </div>
+</div>

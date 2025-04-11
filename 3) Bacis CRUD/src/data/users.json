@@ -1,0 +1,82 @@
+[
+  {
+    "Id":"1",
+    "Name": "Ali ahmed",
+    "Email": "a@gmail.com",
+    "Password": "123",
+    "Role":"Admin",
+    "Token":"2lfpp908ex"
+  },
+  {
+    "Id":"2",
+    "Name": "Bilal Arshed",
+    "Email": "b@gmail.com",
+    "Password": "123",
+    "Role":"Manager",
+    "Token":"rj00rftxhx"
+  },
+  {
+    "Id":"3",
+    "Name": "Daniyal Ali",
+    "Email": "d@gmail.com",
+    "Password": "123",
+    "Role":"Employee",
+    "Token":"jubgchqbi5"
+  },
+  {
+    "Id":"4",
+    "Name": "Ehsan Ilahi",
+    "Email": "e@gmail.com",
+    "Password": "123",
+    "Role":"Employee",
+    "Token":"qr7ziuz9l2"
+  },
+  {
+    "Id":"5",
+    "Name": "Fahad Rasheed",
+    "Email": "f@gmail.com",
+    "Password": "123",
+    "Role":"Employee",
+    "Token":"ctsrn8okxg"
+  },
+  {
+    "Id":"6",
+    "Name": "Ghazanfer Ali",
+    "Email": "g@gmail.com",
+    "Password": "123",
+    "Role":"Employee",
+    "Token":"yrrjhz3vj1"
+  },
+  {
+    "Id":"7",
+    "Name": "Hassan Ali",
+    "Email": "h@gmail.com",
+    "Password": "123",
+    "Role":"Employee",
+    "Token":"tsyarcaye3"
+  },
+  {
+    "Id":"8",
+    "Name": "Irshad Ahmed",
+    "Email": "i@gmail.com",
+    "Password": "123",
+    "Role":"Employee",
+    "Token":"bvy29sl6et"
+  },
+  {
+    "Id":"9",
+    "Name": "Jamshaid Junaid",
+    "Email": "j@gmail.com",
+    "Password": "123",
+    "Role":"Employee",
+    "Token":"phyqnqdnff"
+  },
+  {
+    "Id":"10",
+    "Name": "Khizar Hayat",
+    "Email": "k@gmail.com",
+    "Password": "123",
+    "Role":"Employee",
+    "Token":"gygljvy3n5"
+  }
+]

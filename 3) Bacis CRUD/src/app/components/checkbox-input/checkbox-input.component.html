@@ -1,0 +1,10 @@
+<div class="form-group mb-2">
+  <label [for]="controlName">
+    <input class="form-check-input" type="checkbox" [id]="controlName" [formControl]="control" (change)="toggleCheckbox($event)"/>
+    {{label}}
+  </label>
+<br>
+  <small *ngIf="control.invalid && (isSubmitted || control.touched) " class="text-danger">
+    <span *ngIf="control.errors?.['required']">Field is required.</span>
+  </small>
+</div>

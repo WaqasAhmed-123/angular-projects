@@ -1,0 +1,21 @@
+
+<div class="mb-2">
+  <label [for]="controlName">{{label}}
+    <span *ngIf="isRequired()" class="text-danger">*</span>
+  </label>
+
+  <div class="row">
+    <div *ngFor="let i of data" class="col-md-5">
+      <span class="d-flex">
+        <input class="form-check-input" style="min-width: 15px;" type="radio" [formControl]="control" value="{{i.value}}" id="{{i.value}}">
+        <label class="form-check-label" for="{{i.value}}">
+          &nbsp;{{i.label}}
+        </label>
+      </span>
+    </div>
+  </div>
+
+  <span *ngIf="control.invalid && (isSubmitted || control.touched) " class="text-danger">
+    <span *ngIf="control.errors?.['required']">Field is required.</span>
+  </span>
+</div>

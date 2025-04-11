@@ -1,0 +1,62 @@
+
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <div class="card bg-dark text-white" style="border-radius: 1rem;">
+        <div class="card-body p-4">
+
+
+          <app-loader *ngIf="isLoading"></app-loader>
+
+          <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+
+            <h3 class="fw-bold mb-2 text-uppercase text-center">Sign up</h3>
+            <p class="text-white-50 mb-3 text-center">Please enter your information below!</p>
+
+            <app-text-input
+            [control]="formGroup.controls.name"
+            [type]="'text'" [controlName]="'name'" [label]="'Full Name'"
+            [placeholder]="'Enter Full Name Here.'"
+            [isSubmitted]="isSubmitted" ></app-text-input>
+
+            <app-text-input
+            [control]="formGroup.controls.contact"
+            [type]="'text'" [controlName]="'contact'" [label]="'Contact Number'"
+            [placeholder]="'Enter Contact Number Here.'"
+            [isSubmitted]="isSubmitted" ></app-text-input>
+
+            <app-text-input
+            [control]="formGroup.controls.email"
+            [type]="'email'" [controlName]="'email'" [label]="'Email'"
+            [placeholder]="'Enter Valid Email Here.'"
+            [isSubmitted]="isSubmitted" ></app-text-input>
+
+            <app-text-input
+            [control]="formGroup.controls.password"
+            [type]="'password'" [controlName]="'password'" [label]="'Password'"
+            [placeholder]="'Enter Password Here.'"
+            [isSubmitted]="isSubmitted" ></app-text-input>
+
+            <app-text-input
+            [control]="formGroup.controls.confirmPassword"
+            [type]="'password'" [controlName]="'confirmPassword'" [label]="'Confirm Password'"
+            [placeholder]="'Enter Confirm Password Here.'"
+            [isSubmitted]="isSubmitted" ></app-text-input>
+
+            <div class="form-outline text-center">
+              <button class="btn btn-outline-light btn-lg px-5" type="submit">Register</button>
+            </div>
+          </form>
+
+          <hr>
+          <div>
+            <p class="mb-0 text-start">Back to login
+              <a routerLink="/login" class="text-white-50 fw-bold">Login</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>

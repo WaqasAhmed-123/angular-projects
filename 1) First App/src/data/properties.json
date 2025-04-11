@@ -1,0 +1,62 @@
+[
+  {
+    "Id":1,
+    "Name": "House 1",
+    "Type": "house",
+    "Price": 12000
+  },
+  {
+    "Id":2,
+    "Name": "House 2",
+    "Type": "Villa",
+    "Price": 19000
+  },
+  {
+    "Id":3,
+    "Name": "House 3",
+    "Type": "Apartment",
+    "Price": 18000
+  },
+  {
+    "Id":4,
+    "Name": "House 4",
+    "Type": "house",
+    "Price": 17000
+  },
+  {
+    "Id":5,
+    "Name": "House 5",
+    "Type": "house",
+    "Price": 16000
+  },
+  {
+    "Id":6,
+    "Name": "House 6",
+    "Type": "Cottage",
+    "Price": 15000
+  },
+  {
+    "Id":7,
+    "Name": "House 7",
+    "Type": "Bungalow",
+    "Price": 14000
+  },
+  {
+    "Id":8,
+    "Name": "House 8",
+    "Type": "house",
+    "Price": 13000
+  },
+  {
+    "Id":9,
+    "Name": "House 9",
+    "Type": "house",
+    "Price": 11000
+  },
+  {
+    "Id":10,
+    "Name": "House 10",
+    "Type": "Duplex",
+    "Price": 10000
+  }
+]

@@ -1,0 +1,35 @@
+
+<div class="form-group mb-1">
+  <label [for]="controlName">{{label}}
+    <span *ngIf="isRequired()" class="text-danger">*</span>
+  </label>
+  <ng-select #select
+    [id]="controlName" [formControl]="control"
+    [items]="dataBuffer"
+    [multiple]="isMultiple!"
+    [virtualScroll]="true"
+    [loading]="loading"
+    bindLabel="name"
+    bindValue="id"
+    placeholder="{{placeholder}}"
+    (scrollToEnd)="fetchMore()"
+    (search)="searchData(select.searchTerm)"
+    (change)="clearSelect($event)">
+    <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
+      {{item.name}}
+    </ng-template>
+  </ng-select>
+
+  <span *ngIf="control.invalid && (isSubmitted || control.touched) " class="text-danger">
+    <span *ngIf="control.errors?.['required']">Field is required.</span>
+  </span>
+
+</div>
+
+
+
+
+
+
+
+

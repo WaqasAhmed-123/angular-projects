@@ -1,0 +1,28 @@
+<!-- need to install the following library;
+npm install @swimlane/ngx-charts --save 
+---------------------------------------
+need to import the following libraries in app.module.ts file,
+import { NgxChartsModule }from '@swimlane/ngx-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+----------------------------------------
+
+if encounter any d3 errors, run the following command;
+npm install --save-dev @types/d3-shape @types/d3-scale @types/d3-selection
+----------------------------------------
+
+may be need to use '--force' with commands because of versions mismatch
+
+-->
+<h1>Test</h1>
+<ngx-charts-bar-vertical 
+    [results]="dataset"
+    [xAxisLabel]="'x-axis'"
+    [legendTitle]="'legend1'"
+    [yAxisLabel]="'y-axis'"
+    [legend]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    [xAxis]="true"
+    [yAxis]="true"
+    [gradient]="true">
+</ngx-charts-bar-vertical>

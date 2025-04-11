@@ -1,0 +1,13 @@
+<h3 class="text-center"><u>Map with Direction, Distance, time and Traffic</u></h3>
+<div id="map" style="height: 400px; width: 100%;"></div>
+
+<!-- Button to toggle traffic layer visibility -->
+<button (click)="toggleTrafficLayer()">
+  {{ showTraffic ? 'Hide' : 'Show' }} Traffic
+</button>
+
+<!-- Display distance and duration -->
+<div *ngIf="distanceText && durationText">
+  <p>Distance: {{ distanceText }}</p>
+  <p>Duration: {{ durationText }}</p>
+</div>

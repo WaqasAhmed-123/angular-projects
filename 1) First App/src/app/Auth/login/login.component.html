@@ -1,0 +1,36 @@
+<!-- need to import "ReactiveFormsModule" in app.module.ts -->
+<div class="row m-1">
+  <div class="col-md-6 offset-4">
+  <div class="card m-auto">
+    <div class="card-header text-center">
+      <b>Login</b>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group col-12">
+            <b class="form-label">Email</b>
+            <input type="text" class="form-control" formControlName="email">
+
+            <small *ngIf="!email.valid && (email.touched || isSubmitted)" class="text-danger">
+              <span *ngIf="email.hasError('required')">Email field is required.</span>
+            </small>
+        </div>
+
+        <div class="form-group col-12">
+          <b class="form-label">Password</b>
+          <input type="password" class="form-control" formControlName="password">
+
+          <small *ngIf="!password.valid && (password.touched || isSubmitted)" class="text-danger">
+            <span *ngIf="password.errors?.['required']">Password field is required.</span>
+          </small>
+        </div>
+
+        <div class="form-group col-12 text-center m-2">
+          <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  </div>
+</div>

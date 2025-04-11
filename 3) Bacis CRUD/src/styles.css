@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'assets/customstyles.css';
+@import '../node_modules/alertifyjs/build/css/alertify.min.css';
+@import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
+@import '../node_modules/bootstrap-icons/font/bootstrap-icons.css';
+
+
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* long words breaking in alertify */
+.ajs-message{
+  overflow-wrap:break-word !important;
+    word-wrap: break-word !important;
+}

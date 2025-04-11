@@ -1,0 +1,78 @@
+<app-loader *ngIf="isLoading"></app-loader>
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':editModalClass}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-capitalize">Update Employee</h5>
+        <button (click)="editModalClass='none'" type="button" class="btn btn-sm btn-danger close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="formGroup" (ngSubmit)="confirmEdit()">
+      <div class="modal-body">
+          <app-text-input
+          [control]="formGroup.controls.name"
+          [type]="'text'" [controlName]="'name'" [label]="'Full Name'"
+          [placeholder]="'Enter Full Name Here.'"
+          [isSubmitted]="isSubmitted" ></app-text-input>
+
+          <app-text-input
+          [control]="formGroup.controls.contact"
+          [type]="'text'" [controlName]="'contact'" [label]="'Contact Number'"
+          [placeholder]="'Enter Contact Here.'"
+          [isSubmitted]="isSubmitted" ></app-text-input>
+
+          <app-text-input
+          [control]="formGroup.controls.email"
+          [type]="'email'" [controlName]="'email'" [label]="'Email'"
+          [placeholder]="'Enter Email Here.'"
+          [isSubmitted]="isSubmitted" ></app-text-input>
+
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" [disabled]="isLoading">
+            <span class="spinner-border spinner-border-sm" *ngIf="isLoading" role="status" aria-hidden="true"></span>
+            Update
+          </button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="editModalClass='none'">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<app-delete-modal (confirmCallbackFunc)="confirmDelete($event)"></app-delete-modal>
+
+<div class="container m-1">
+<h3 class="text-center text-decoration-underline">
+  Employee Record
+</h3>
+<app-datatable (chilRefFunc)="parentFunction($event)" [endpoint]="endpoint" [tableHeader]="tableHeader" [temp]="trTemp">
+</app-datatable>
+</div>
+
+<ng-template #trTemp let-data="data">
+  <tr *ngFor="let i of data">
+    <td>
+      <a *ngIf="i.profile"  href="{{i.profile}}" target="_blank">
+        <img src="{{i.profile}}" width="50"/>
+      </a>
+      <img *ngIf="i.profile===''" src="assets/images/warning.png" width="50"/>
+    </td>
+    <td>
+      {{i.name}}
+    </td>
+    <td>
+      {{i.contact}}
+    </td>
+    <td>
+      {{i.email}}
+    </td>
+    <td>
+      <button class="btn btn-sm btn-success" (click)="edit(i.id)">Edit</button>&nbsp;
+      <button class="btn btn-sm btn-danger" (click)="delete(i.id)">Delete</button>
+    </td>
+  </tr>
+</ng-template>

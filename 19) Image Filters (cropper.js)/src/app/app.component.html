@@ -1,0 +1,37 @@
+<!--
+<div>
+  <div>
+    <a routerLink="/page1">Page 1</a>
+    &nbsp;
+    <a routerLink="/page2">Page 2</a>
+    &nbsp;
+    <a routerLink="/page3">Page 3</a>
+  </div>
+  <br>
+
+  <router-outlet></router-outlet>
+</div> -->
+
+<!-- A grey horizontal navbar that becomes vertical on small screens -->
+<nav class="navbar navbar-expand-sm bg-primary">
+
+  <div class="container-fluid">
+    <!-- Links -->
+    <ul class="navbar-nav fw-bolder">
+      <li class="nav-item">
+        <a class="nav-link text-dark" routerLink="/page1">Page 1</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-dark" routerLink="/page2">Page 2</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link  text-dark" routerLink="/page3">Page 3</a>
+      </li>
+    </ul>
+  </div>
+
+</nav>
+
+<router-outlet></router-outlet>
+
+

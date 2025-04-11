@@ -1,0 +1,88 @@
+<div class="loader" *ngIf="isLoading">
+  <div class="spinner-border" role="status" style="width: 6rem; height: 6rem;">
+    <span class="visually-hidden"></span>
+  </div>
+</div>
+
+<div class="m-3">
+
+  <h3 class="text-center">
+    <u>Dynamic Map</u>
+    <details>
+      This component includes Directions,
+      Traffic intensity,
+      Distance,
+      Duration time,
+      Air Pollution,
+      Air Pollen Forecast,
+      Time Zone
+    </details>
+  </h3>
+
+  <!-- Search inputs and button -->
+  <div>
+    <div class="row">
+      <div class="col-6">
+        <div class="me-1">
+          <input class="form-control" id="start-input" type="text" placeholder="Enter start location"/>
+          <small *ngIf="defaultAddress"><b>Default Location:</b> {{defaultAddress}}</small>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="ms-1">
+          <input class="form-control" id="end-input" type="text" placeholder="Enter destination"/>
+        </div>
+      </div>
+
+    </div>
+    <div class="text-right m-1">
+      <button class="btn btn-success" (click)="onStart()">Start</button>
+    </div>
+  </div>
+
+
+
+  <!-- Map container -->
+  <div id="map" style="height: 400px; width: 100%; margin-bottom: 10px;"></div>
+
+  <div class="my-1 text-right">
+    <button class="btn" [ngClass]="showTraffic?'btn-danger':'btn-primary'" (click)="toggleTrafficLayer()">{{showTraffic?'Hide':'Show'}} Trafic</button>
+  </div>
+
+  <div *ngIf="distanceText && durationText">
+    <p><b>Distance</b>: {{ distanceText }}</p>
+    <p><b>Duration</b>: {{ durationText }}</p>
+  </div>
+
+
+<div class="my-1">
+  <button class="btn btn-info" (click)="getAirQuality()">Air Quality</button>
+  <div *ngIf="airQuality">
+    <button class="btn btn-sm btn-rounded btn-danger float-right" (click)="airQuality = undefined">x</button>
+    <br>
+    {{airQuality|json}}
+  </div>
+</div>
+
+<div class="my-1">
+  <button class="btn btn-info" (click)="getPollenForecast()">Pollen Forecast</button>
+  <div *ngIf="pollenData">
+    <button class="btn btn-sm btn-rounded btn-danger float-right" (click)="pollenData = undefined">x</button>
+    <br>
+    {{pollenData|json}}
+  </div>
+</div>
+
+<div class="my-1">
+  <button class="btn btn-info" (click)="getTimezone()">Time zone</button>
+  <div *ngIf="timezone">
+    <button class="btn btn-sm btn-rounded btn-danger float-right" (click)="timezone = undefined">x</button>
+    <br>
+    {{timezone|json}}
+  </div>
+</div>
+
+
+<!-- <img src="https://maps.googleapis.com/maps/api/streetview?size=600x300&location=40.689247,-74.044502&heading=235&pitch=10&key=AIzaSyDtvYamhQSMdwkemW1d-KSsmKJRgzh4GIw" alt="Street View Image"> -->
+</div>

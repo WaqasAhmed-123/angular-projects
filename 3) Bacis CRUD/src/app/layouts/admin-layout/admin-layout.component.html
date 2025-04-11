@@ -1,0 +1,201 @@
+<div>
+  <!--Main Navigation-->
+  <header>
+    <!-- Sidebar -->
+    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-light {{collapseClass}}">
+
+      <div class="d-flex flex-column flex-shrink-0 p-3 bg-light">
+
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+            <a routerLink="/login" class="nav-link active" aria-current="page">
+              <span class="d-flex"><mat-icon fontIcon="portrait"></mat-icon>
+                <span class="sidebar-link-text-align">
+                  &nbsp;&nbsp;Dashboard
+                </span>
+              </span>
+            </a>
+          </li>
+
+          <span *ngIf="loggedinUser.role === 'Admin'">
+            <li class="mb-1">
+              <a class="nav-link link-dark cursor-pointer" (click)="toggleSubMenu(1)" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                <span class="d-flex"><mat-icon fontIcon="portrait"></mat-icon>
+                  <span class="sidebar-link-text-align">
+                    &nbsp;&nbsp;Manage Users
+                  </span>
+                  <mat-icon fontIcon="keyboard_arrow_down"></mat-icon>
+                </span>
+              </a>
+
+              <div class="collapse {{subMenu1}}" id="dashboard-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li>
+                    <a routerLink="/admin/add-user" class="nav-link link-dark ms-4 ">
+                          Add New
+                    </a>
+                  </li>
+                  <li>
+                    <a routerLink="/admin/view-user" class="nav-link link-dark ms-4 ">
+                          View record
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+          </span>
+
+          <span *ngIf="loggedinUser.role === 'Manager'">
+            <li>
+              <a routerLink="/admin/view-user" class="nav-link link-dark">
+                <span class="d-flex"><mat-icon fontIcon="portrait"></mat-icon>
+                  <span class="sidebar-link-text-align">
+                    &nbsp;&nbsp;View Users
+                  </span>
+                </span>
+              </a>
+            </li>
+          </span>
+
+
+          <li class="mb-1">
+            <a class="nav-link link-dark cursor-pointer" (click)="toggleSubMenu(2)" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+              <span class="d-flex"><mat-icon fontIcon="portrait"></mat-icon>
+                <span class="sidebar-link-text-align">
+                  &nbsp;&nbsp;Manage Tasks
+                </span>
+                <mat-icon fontIcon="keyboard_arrow_down"></mat-icon>
+              </span>
+            </a>
+
+            <div class="collapse {{subMenu2}}" id="dashboard-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li>
+                  <a routerLink="/common/add-task" class="nav-link link-dark ms-4 ">
+                        Add New
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/common/view-task" class="nav-link link-dark ms-4 ">
+                        View Tasks
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <a routerLink="/common/chat" class="nav-link link-dark">
+              <span class="d-flex"><mat-icon fontIcon="chat"></mat-icon>
+                <span class="sidebar-link-text-align">
+                  &nbsp;&nbsp;Chat Broadcast
+                </span>
+              </span>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+
+    </nav>
+    <!-- Sidebar -->
+
+    <!-- Navbar -->
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+      <!-- Container wrapper -->
+      <div class="container-fluid">
+        <!-- Toggle button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" (click)="toggleCollapse()" data-bs-target="#sidebarMenu" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Toggle button -->
+
+        <!-- Brand -->
+        <a class="navbar-brand" routerLink="/login">
+          <img src="assets/images/warning.png"
+              height="25"
+              alt="Logo"
+              loading="lazy" />
+        </a>
+
+
+        <!-- Right links -->
+        <ul class="navbar-nav ms-auto d-flex flex-row text-white">
+
+          <li class="nav-item"><small>({{loggedinUser.role}})</small></li>
+          <li class="nav-item mx-2">
+            <span class="m-1">
+              <span class="cursor-pointer" mat-icon-button [matMenuTriggerFor]="menuMsg">
+                <mat-icon fontIcon="mail_outline" class="nav-mat-icon"></mat-icon>
+              </span>
+              <mat-menu #menuMsg="matMenu" class="mt-3">
+                <li mat-menu-item>link 1</li>
+                <li mat-menu-item>link 1</li>
+                <li mat-menu-item>link 1</li>
+              </mat-menu>
+            </span>
+
+            <span class="m-1">
+              <span class="cursor-pointer" mat-icon-button [matMenuTriggerFor]="menuNotify">
+                <mat-icon fontIcon="notifications" class="nav-mat-icon" matBadgeSize="small"
+                mat-raised-button matBadge="8" matBadgePosition="after" matBadgeColor="accent"></mat-icon>
+              </span>
+              <mat-menu #menuNotify="matMenu" class="mt-3">
+                <button mat-menu-item>
+                  <mat-icon>dialpad</mat-icon>
+                  <span>Redial</span>
+                </button>
+                <button mat-menu-item disabled>
+                  <mat-icon>voicemail</mat-icon>
+                  <span>Check voice mail</span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon>notifications_off</mat-icon>
+                  <span>Disable alerts</span>
+                </button>
+              </mat-menu>
+            </span>
+          </li>
+
+          <li class="nav-item">
+            <span class="cursor-pointer" mat-icon-button [matMenuTriggerFor]="menuProfile" aria-label="Example icon-button with a menu">
+              {{loggedinUser.name}}
+              <mat-icon fontIcon="keyboard_arrow_down" class="small-mat-icon"></mat-icon>
+            </span>
+            <mat-menu #menuProfile="matMenu" class="mt-3">
+              <li routerLink="/common/profile" mat-menu-item>
+                <mat-icon fontIcon="portrait"></mat-icon>
+                <span>Profile</span>
+              </li>
+
+              <li routerLink="/common/password" mat-menu-item>
+                <mat-icon fontIcon="lock" routerLink="/"></mat-icon>
+                <span>Password</span>
+              </li>
+              <mat-divider></mat-divider>
+              <li (click)="logout()" mat-menu-item>
+                <mat-icon fontIcon="settings_power"></mat-icon>
+                <span>Logout</span>
+              </li>
+            </mat-menu>
+          </li>
+
+        </ul>
+      </div>
+      <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+  </header>
+  <!--Main Navigation-->
+
+  <!--Main layout-->
+  <main style="margin-top: 58px">
+    <div class="container pt-4">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+  <!--Main layout-->
+</div>

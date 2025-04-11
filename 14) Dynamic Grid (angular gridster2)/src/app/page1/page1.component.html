@@ -1,0 +1,29 @@
+<div style="width: 100vw; height: 100vh;">
+  <div class="options">
+    <a  href="https://github.com/tiberiuzuld/angular-gridster2/tree/master/src/app/sections/api"
+       target="_blank" class="source-code-button">
+      open_in_new
+      Source
+    </a>
+  </div>
+  <div class="options-header">
+    <button color="accent" (click)="pushItem()" class="add-button cols-2">
+      Resize first item and push others
+    </button>
+    <button  (click)="addItem()" class="add-button cols-2">
+      add
+    </button>
+  </div>
+
+
+  <gridster [options]="options">
+    <gridster-item [item]="item" *ngFor="let item of dashboard">
+      <div class="button-holder">
+        <button (mousedown)="removeItem($event, item)"
+                (touchstart)="removeItem($event, item)">
+          delete
+        </button>
+      </div>
+    </gridster-item>
+  </gridster>
+  </div>

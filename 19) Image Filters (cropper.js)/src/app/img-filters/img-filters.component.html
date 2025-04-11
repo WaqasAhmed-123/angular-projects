@@ -1,0 +1,45 @@
+<!-- Image Upload Input -->
+<input type="file" (change)="onFileChange($event)" accept="image/*" />
+<br />
+
+<!-- Filters Controls -->
+<input id="sepia" type="range" [(ngModel)]="sepia" step="0.1" min="0" max="1"> Sepia
+<span>({{sepia}})</span><br/>
+
+<input id="grayscale" type="range" [(ngModel)]="grayScale" step="0.1" min="0" max="1"> Grayscale
+<span>({{grayScale}})</span><br/>
+
+<input id="hueRotate" type="range" [(ngModel)]="hueRotate" step="1" min="0" max="360"> Hue Rotate
+<span>({{hueRotate}} deg)</span><br/>
+
+<input id="saturate" type="range" [(ngModel)]="saturate" step="0.1" min="0" max="10"> Saturate
+<span>({{saturate * 100 | number:'0.0-0'}} %)</span><br/>
+
+<input id="brightness" type="range" [(ngModel)]="brightness" step="0.1" min="0" max="3"> Brightness
+<span>({{brightness * 100 | number:'0.0-0'}} %)</span><br/>
+
+<input id="contrast" type="range" [(ngModel)]="contrast" step="0.1" min="0" max="3"> Contrast
+<span>({{contrast * 100 | number:'0.0-0'}} %)</span><br/>
+
+<input id="opacity" type="range" [(ngModel)]="opacity" step="0.1" min="0" max="1"> Opacity
+<span>({{opacity * 100 | number:'0.0-0'}} %)</span><br/>
+
+<input id="blur" type="range" [(ngModel)]="blur" step="0.1" min="0" max="10"> Blur
+<span>({{blur | number:'0.0-0'}} px)</span><br/>
+
+<input id="invert" type="range" [(ngModel)]="invert" step="0.1" min="0" max="1"> Invert
+<span>({{invert * 100 | number:'0.0-0'}} %)</span><br/>
+
+<button (click)="rotateImage()">🔄 Rotate 90°</button>
+<button (click)="flipImage('horizontal')">↔️ Flip Horizontal</button>
+<button (click)="flipImage('vertical')">↕️ Flip Vertical</button>
+
+<!-- Reset Filters Button -->
+<button (click)="resetFilters()">Reset</button><br/><br/>
+
+<!-- Display Uploaded Image with Filters -->
+<img *ngIf="imageSrc"
+  [style.filter]="'grayscale('+grayScale+') sepia('+sepia+') hue-rotate('+hueRotate+'deg) saturate('+saturate+') brightness('+brightness+') contrast('+contrast+') opacity('+opacity+') blur('+blur+'px) invert('+invert+')'"
+  [style.transform]="'rotate('+rotation+'deg) scaleX('+scaleX+') scaleY('+scaleY+')'"
+  [src]="imageSrc"
+  width="300" height="300" />
