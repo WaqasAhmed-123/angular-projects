@@ -74,7 +74,7 @@ This repository showcases hands-on implementations of key Angular 16 concepts an
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/your-username/angular-projects.git
+   git clone https://github.com/WaqasAhmed-123/angular-projects.git
 2. Open the solution in **Visual Studio**.
 3. Install dependencies using following command
 ```sh
